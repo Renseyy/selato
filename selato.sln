@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelatoClient", "SelatoClient\SelatoClient.csproj", "{CEB8CD00-EE0C-4136-98D8-4FCFC474F0E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelatoLib", "SelatoLib\SelatoLib.csproj", "{E27000EC-FDC8-4816-8092-C56CECAD09CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEB8CD00-EE0C-4136-98D8-4FCFC474F0E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEB8CD00-EE0C-4136-98D8-4FCFC474F0E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEB8CD00-EE0C-4136-98D8-4FCFC474F0E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEB8CD00-EE0C-4136-98D8-4FCFC474F0E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E27000EC-FDC8-4816-8092-C56CECAD09CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E27000EC-FDC8-4816-8092-C56CECAD09CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E27000EC-FDC8-4816-8092-C56CECAD09CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E27000EC-FDC8-4816-8092-C56CECAD09CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
