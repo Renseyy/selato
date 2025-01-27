@@ -1,49 +1,33 @@
 ﻿namespace SelatoLib.Client.Misc.Collections;
 
-
-/// <summary>
-/// TODO: migrate to Dictionary
-/// </summary>
-public class DictionaryStringInt1024
+public class _FixedSizeDictionary<TKey, TValue> 
+    where TKey : struct
+    where TValue : struct
 {
-    private readonly KeyValueStringInt?[] _items = new KeyValueStringInt[Max];
-    private int _count = 0;
+    private readonly KeyValue<TKey, TValue>?[] _items = new KeyValue<TKey, TValue>?[Max];
+    private int _count;
     private const int Max = 1024;
-
-    /// <summary>
-    /// Set the specified key to the specified value.
-    /// </summary>
-    /// <param name="key">Key</param>
-    /// <param name="value">Value to set</param>
-    public void Set(string key, int value)
+    
+    public void Set(TKey key, TValue value)
     {
         for (var i = 0; i < _count; i++)
         {
             if (_items[i] == null)
-            {
                 continue;
-            }
-
-            if (_items[i]?.Key != key) continue;
-            _items[i]!.Value = value;
-            return;
+            
+            
+            if (!EqualityComparer<TKey>.Default.Equals(_items[i]!.Key, key)) continue;
+                _items[i]!.Value = value;
+                return;
         }
         for (var i = 0; i < _count; i++)
         {
             if (_items[i] != null) continue;
-            _items[i] = new KeyValueStringInt
-            {
-                Key = key,
-                Value = value
-            };
+            _items[i] = new KeyValue<TKey, TValue>(key, value);
             return;
         }
 
-        var keyValue = new KeyValueStringInt
-        {
-            Key = key,
-            Value = value
-        };
+        var keyValue = new KeyValue<TKey, TValue>(key, value);
         _items[_count++] = keyValue;
     }
 
@@ -53,17 +37,15 @@ public class DictionaryStringInt1024
     /// </summary>
     /// <param name="key">Key</param>
     /// <returns><b>true</b> if key is found</returns>
-    internal bool Contains(string key)
+    internal bool Contains(TKey key)
     {
         for (var i = 0; i < _count; i++)
         {
-            if (_items[i] == null)
+            if (_items[i]?.Key.Equals(key) != true)
             {
                 continue;
             }
-
-            if (_items[i]?.Key != key)
-                continue;
+            
             return true;
         }
         return false;
@@ -75,16 +57,15 @@ public class DictionaryStringInt1024
     /// </summary>
     /// <param name="key">Key</param>
     /// <returns><b>Stored value</b> when key is found in collection, <b>-1</b> otherwise.</returns>
-    internal int? Get(string key)
+    internal TValue? Get(TKey key)
     {
         for (var i = 0; i < _count; i++)
         {
-            if (_items[i] == null)
+            if (_items[i]?.Key.Equals(key) != true)
             {
                 continue;
             }
-            if (_items[i]?.Key != key)
-                continue;
+            
             return _items[i]?.Value;
         }
         return null;
@@ -96,16 +77,15 @@ public class DictionaryStringInt1024
     /// </summary>
     /// <param name="key">Key</param>
     /// <returns><b>true</b> if key is found in collection, <b>false</b> otherwise.</returns>
-    public bool Remove(string key)
+    public bool Remove(TKey key)
     {
         for (var i = 0; i < _count; i++)
         {
-            if (_items[i] == null)
+            if (_items[i]?.Key.Equals(key) != true)
             {
                 continue;
             }
-
-            if (_items[i]?.Key != key) continue;
+            
             _items[i] = null;
             return true;
         }

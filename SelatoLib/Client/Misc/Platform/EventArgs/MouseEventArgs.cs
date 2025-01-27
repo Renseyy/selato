@@ -1,9 +1,9 @@
 ﻿namespace SelatoLib.Client.Misc.Platform.EventArgs;
 
-public class MouseEventArgs
+public class MouseEventArgs(int x, int y)
 {
-    public int X { get; set; }
-    public int Y { get; set; }
+    public int X { get; set; } = x;
+    public int Y { get; set; } = y;
     public int MovementX { get; set; }
     public int MovementY { get; set; }
     public int Button { get; set; }

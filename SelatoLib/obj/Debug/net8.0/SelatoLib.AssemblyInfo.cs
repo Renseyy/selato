@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SelatoLib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+165b9d90ea6db216ccb8373a02c3f22b6db5f2b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("SelatoLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SelatoLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

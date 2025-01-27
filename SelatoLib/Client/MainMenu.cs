@@ -1,20 +1,14 @@
-﻿namespace SelatoLib.Client;
+﻿using SelatoLib.Client.Misc.MainMenu;
+using SelatoLib.Client.Misc.Platform;
 
-public class MainMenu
+namespace SelatoLib.Client;
+
+public class MainMenu(GamePlatform platform)
 {
-    private int one = 1;
-    private DictionaryStringInt1024 textures = new DictionaryStringInt1024();
-    textTextures = new TextTexture[256];
-    textTexturesCount = 0;
-    screen = new ScreenMain();
-    screen.menu = this;
-    loginClient = new LoginClientCi();
-    assets = new AssetList();
-    assetsLoadProgress = new FloatRef();
-    fontMenuHeading = new FontCi();
-    fontMenuHeading.size = 20;
-    public MainMenu()
-    {
-        one = 1;
-    }
+    public GamePlatform Platform { get; set; } = platform;
+    public Language 
+    private float One { get; set; }= 1;
+    private Dictionary<string, int> _textures = new Dictionary<string, int>();
+    private TextTexture[] _textTextures = new TextTexture[256];
+    
 }

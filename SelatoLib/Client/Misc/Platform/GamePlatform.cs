@@ -16,11 +16,11 @@ public abstract class GamePlatform
     public abstract float MathTan(float p);
     public abstract float FloatModulo(float a, int b);
 
-    public abstract int IntParse(string value);
+    public abstract bool IntTryParse(string value, out int result);
     public abstract float FloatParse(string value);
     public abstract string IntToString(int value);
     public abstract string FloatToString(float value);
-    public abstract bool FloatTryParse(string s, ref float ret);
+    public abstract bool FloatTryParse(string value, out float ret);
     public abstract string StringFormat(string format, string arg0);
     public abstract string StringFormat2(string format, string arg0, string arg1);
     public abstract string StringFormat3(string format, string arg0, string arg1, string arg2);
@@ -75,8 +75,8 @@ public abstract class GamePlatform
     public abstract void SaveScreenshot();
     public abstract Bitmap GrabScreenshot();
     public abstract AviWriter AviWriterCreate();
-    public abstract UriCi ParseUri(string uri);
-    public abstract RandomCi RandomCreate();
+    public abstract Uri ParseUri(string uri);
+    public abstract Random RandomCreate();
     public abstract string PathStorage();
     public abstract void SetVSync(bool enabled);
     public abstract string GetGameVersion();
@@ -95,12 +95,12 @@ public abstract class GamePlatform
     public abstract bool Focused();
     public abstract void AddOnCrash(OnCrashHandler handler);
     public abstract string KeyName(int key);
-    public abstract DisplayResolutionCi[] GetDisplayResolutions(ref int resolutionsCount);
+    public abstract DisplayResolution[] GetDisplayResolutions(ref int resolutionsCount);
     public abstract WindowState GetWindowState();
     public abstract void SetWindowState(WindowState value);
     public abstract void ChangeResolution(int width, int height, int bitsPerPixel, float refreshRate);
-    public abstract DisplayResolutionCi GetDisplayResolutionDefault();
-    public abstract void WebClientUploadDataAsync(string url, byte[] data, int dataLength, HttpResponseCi response);
+    public abstract DisplayResolution GetDisplayResolutionDefault();
+    public abstract void WebClientUploadDataAsync(string url, byte[] data, int dataLength, HttpResponse response);
     public abstract string FileOpenDialog(string extension, string extensionName, string initialDirectory);
     public abstract void MouseCursorSetVisible(bool value);
     public abstract bool MouseCursorIsVisible();
@@ -114,8 +114,8 @@ public abstract class GamePlatform
     public abstract void RequestMousePointerLock();
     public abstract void ExitMousePointerLock();
     public abstract bool MultithreadingAvailable();
-    public abstract void QueueUserWorkItem(Action_ action);
-    public abstract void LoadAssetsAsyc(AssetList list, ref float progress);
+    public abstract void QueueUserWorkItem(Action action);
+    public abstract void LoadAssetsAsyc(List<Asset> list, ref float progress);
     public abstract byte[] GzipCompress(byte[] data, int dataLength, ref int retLength);
     public abstract bool IsDebuggerAttached();
     public abstract bool IsSmallScreen();
@@ -124,7 +124,7 @@ public abstract class GamePlatform
     public abstract Asset LoadAssetFromCache(string md5);
     public abstract bool IsCached(string md5);
     public abstract bool IsChecksum(string checksum);
-    public abstract string DecodeHTMLEntities(string htmlencodedstring);
+    public abstract string DecodeHtmlEntities(string htmlencodedstring);
     public abstract string QueryStringValue(string key);
     public abstract void SetWindowCursor(int hotx, int hoty, int sizex, int sizey, byte[] imgdata, int imgdataLength);
     public abstract void RestoreWindowCursor();
@@ -132,17 +132,17 @@ public abstract class GamePlatform
     // Audio
     public abstract AudioData AudioDataCreate(byte[] data, int dataLength);
     public abstract bool AudioDataLoaded(AudioData data);
-    public abstract AudioCi AudioCreate(AudioData data);
-    public abstract void AudioPlay(AudioCi audio);
-    public abstract void AudioPause(AudioCi audio);
-    public abstract void AudioDelete(AudioCi audioCi);
-    public abstract bool AudioFinished(AudioCi audio);
-    public abstract void AudioSetPosition(AudioCi audio, float x, float y, float z);
+    public abstract Audio AudioCreate(AudioData data);
+    public abstract void AudioPlay(Audio audio);
+    public abstract void AudioPause(Audio audio);
+    public abstract void AudioDelete(Audio audioCi);
+    public abstract bool AudioFinished(Audio audio);
+    public abstract void AudioSetPosition(Audio audio, float x, float y, float z);
     public abstract void AudioUpdateListener(float posX, float posY, float posZ, float orientX, float orientY, float orientZ);
     
     // Tcp
     public abstract bool TcpAvailable();
-    public abstract void TcpConnect(string ip, int port, BoolRef connected);
+    public abstract void TcpConnect(string ip, int port, ref bool isConnected);
     public abstract void TcpSend(byte[] data, int length);
     public abstract int TcpReceive(byte[] data, int dataLength);
 
@@ -208,8 +208,4 @@ public abstract class GamePlatform
     public abstract void SinglePlayerServerDisable();
     public abstract DummyNetwork SinglePlayerServerGetNetwork();
     public abstract PlayerInterpolationState CastToPlayerInterpolationState(InterpolatedObject a);
-    
-    // Translation
-    public abstract bool LanguageNativeAvailable();
-    public abstract Language GetLanguageHandler();
 }

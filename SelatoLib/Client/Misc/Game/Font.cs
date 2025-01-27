@@ -7,7 +7,7 @@ public class Font()
     
     internal FontStyle Style { get; } = 0;
 
-    public Font(string family, float size, FontStyle style) : this()
+    public Font(string family = "Arial", float size = 12, FontStyle style = 0) : this()
     {
         Family = family;
         Size = size;
